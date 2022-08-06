@@ -1002,7 +1002,7 @@ Mediapipedll依赖包下载选择弹窗:
     , NumPut(260, TDC, x64 ? 156 : 92, "UInt") ; cxWidth
     , DllCall("Comctl32.dll\TaskDialogIndirect", "Ptr", &TDC, "int*", Button := 0, "int*", Radio := 0, "int*", Checked := 0)
 
-    if (Button=1) {  ; OK
+    if (Button=1) {
         if (Radio!=203) {
             Run *RunAs "%A_AhkPath%" /r /f "%A_ScriptDir%/Lib/DownloadProgressBar.ahk" %Radio% %hGui%,,, 下载进程PID
             loading := ["🕛", "🕐", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"]
