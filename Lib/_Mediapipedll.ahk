@@ -6,7 +6,7 @@
 
 ; Methods of independent testing:
 ; Uncomment the above code and store it in the parent directory to run. Comment out the error code again.
-; You need to use "Visual_Gesture_Recognition.ahk" to download and extract the dependency package successfully before this script can take effect independently.
+; You need to use "VisualGestureRecognition.ahk" to download and extract the dependency package successfully before this script can take effect independently.
 
 手势识别加载:
 
