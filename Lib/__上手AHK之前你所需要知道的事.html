@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>上手AHK之前你所需要知道的事</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+ <style type="text/css">
+div {
+margin-left: 30px;
+margin-right: 30px;
+text-align: left;
+}
+
+pre {
+margin-left: 30px;
+margin-right: 30px;
+text-align: left;
+border-collapse: collapse;
+background-color: #EFF0F1;
+border: 14px solid #EFF0F1;
+font-family: "Microsoft YaHei"
+}
+</style>
+
+</head>
+<body>
+
+<div style="width:800px;"><h2>　　　　　　　　　　上手AHK之前你所需要知道的事</div>
+
+<div style="width:200px;"><font color="3F5770"><h2>简介</h2></font></div>
+
+<div style="width:800px;"><a href="https://www.autohotkey.com/">AutoHotkey</a>是一门诞生了十几年的<b><font color="212121">脚本语言</font></b>，随着时间不断的发展，AHK不仅在<b><font color="212121">按键映射修改</font></b>上做到了可自定义的极致。还在<b><font color="3F5770">桌面系统、网页、游戏</font></b>等<b><font color="212121">自动化方面</font></b>得到大量爱好者们的深耕运用。其<b><font color="212121">十多年</font></b>的发展过程中所<b><font color="212121">累积</font></b>的问题解决方案，能解决你在日常所能遇到的绝大部分问题。</div>
+<div style="height:20px;"> </div>
+<div style="width:800px;"><a href="https://www.autohotkey.com/">AHK</a>以<b><font color="212121">1MB</font></b>大小的<b><font color="212121">解释器</font></b>实现了<b><font color="212121">免安装部署</font></b>、<b><font color="212121">即写即用</font></b>的特性使得它成为一个不错的解决问题利器。
+正因为AHK不断<b><font color="212121">做加法</font></b>和<b><font color="212121">向前兼容</font></b>，也造成了<b><font color="212121">新旧语法共存</font></b>与混乱的问题。</div>
+<p>
+<div style="width:800px;height:100px;">
+以下就简单解释一下，<a href="https://www.autohotkey.com/">AHK</a>v1版，<b><font color="A04040">传统命令式</font></b>语法和<b><font color="A04040">函数表达式</font></b>的语法不同之处和<b><font color="212121">区分</font></b>方法。避免不必要的困扰
+<p>
+<b><font color="212121">早期</font></b>市面上编程语言标准未成熟时，多半都是用的<b><font color="A04040">传统文本赋值</font></b>和<b><font color="A04040">命令式语句指令</font></b>来编写流程，这并不符合现代主流语言<b><font color="A04040">函数表达式</font></b>的编程习惯。以下仅指出如何<b><font color="212121">分辨</font></b>这两种写法的区别，有助于更好理解这门语言的特性。</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:400px;"><font color="A04040"><h3>一、 变量的传统文本赋值</font> 与 <font color="A04040">表达式文本赋值</font></h3></div>
+
+<div style="width:800px;height:20px;"><b><font color="212121">1.</font></b>变量以<b><font color="A04040">传统文本赋值</font></b>与if判断（用 <b>=</b> 赋值，if <b><font color="212121">不加括号</font></b>以<b><font color="A04040">传统式字符串</font></b>比较判断）</div>
+
+<pre style="width:766px">
+a = 内容a          <font color="708EB9">; --> 在名为 a 的变量中，用 = 赋值字符串 内容a。</font>
+
+<font color="0148C2">if</font> a = 内容a       <font color="708EB9">; --> 判断变量 a 的值是否等于字符串 内容a，如果相同则执行花括号的代码</font>
+{                        <font color="708EB9">; --> 以下弹窗显示内容为："</font><font color="5100FF">传统命令式显示变量写法：内容a</font><font color="708EB9">"</font>
+    <font color="0148C2">MsgBox</font>, 传统命令式显示变量写法：%a%
+}
+</pre>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px;height:20px;"><b><font color="212121">2.</font></b>变量以<b><font color="A04040">表达式文本赋值</font></b>与if判断（用 <b>:=</b> 赋值，if <b><font color="212121">加括号</font></b>以<b><font color="A04040">表达式字符串</font></b>比较判断）</div>
+
+<pre style="width:766px">
+a := "内容a"        <font color="708EB9">; --> 在名为 a 的变量中，用 := 赋值字符串 内容a。(表达式的字符串需要双引号定义)</font>
+
+<font color="0148C2">if</font> (a = "内容a")    <font color="708EB9">; --> 判断变量 a 的值是否等于双引号中的字符串 内容a，如果相同则执行花括号的代码</font>
+{                       <font color="708EB9">; --> 先在开头用 % 转为强制表达式，以下弹窗显示内容为："</font><font color="5100FF">表达式显示变量写法：内容a</font><font color="708EB9">"</font>
+    <font color="0148C2">MsgBox</font>, % "表达式显示变量写法：" a
+}
+</pre>
+
+
+<div style="width:800px;height:46px;">可以看出以上两个示例效果是<b><font color="212121">等效</font></b>的，只是<b><font color="212121">写法不同</font></b>而已。再继续看下一组<b><font color="212121">等效示例</font></b>进一步解释问题</div>
+
+<div style="width:800px;"><font color="A04040"><h3>二、 变量的传统赋值判断</font> 与 <font color="A04040">表达式赋值判断</font></h3></div>
+<div style="width:800px;height:20px;"><b><font color="212121">1.</font></b>变量以<b><font color="A04040">传统赋值</font></b>与if 变量判断（用 <b>=</b> 赋值，if <b><font color="212121">不加括号</font></b>以<b><font color="A04040">传统式</font></b>进行变量比较判断）</div>
+
+<pre style="width:766px">
+b = 内容b       <font color="708EB9">; --> 在名为 b 的变量中，用 = 赋值字符串 内容b。</font>
+c = %b%       <font color="708EB9">; --> 在名为 c 的变量中，用 = 赋值变量 b 的内容。使变量 c 与变量 b 内容相同</font>
+
+<font color="0148C2">if</font> b = %c%     <font color="708EB9">; --> 判断变量 b 的值与变量 c 的值是否相同，如果相同则执行花括号的代码</font>
+{                     <font color="708EB9">; --> 以下弹窗传统的混合赋值显示内容为："</font><font color="5100FF">变量b：内容b - 变量c：内容b</font><font color="708EB9">"</font>
+    <font color="0148C2">MsgBox</font>, 变量b：%b% - 变量c：%c%
+}
+</pre>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px;height:20px;"><b><font color="212121">2.</font></b>变量以<b><font color="A04040">表达式赋值</font></b>与if 变量判断（用 <b>:=</b> 赋值，if <b><font color="212121">加括号</font></b>以<b><font color="A04040">表达式</font></b>进行变量比较判断）</div>
+
+
+<pre style="width:766px">
+b := "内容b"   <font color="708EB9">; --> 在名为 b 的变量中，用 := 赋值字符串 内容b。(表达式的字符串需要双引号定义)</font>
+c := b             <font color="708EB9">; --> 在名为 c 的变量中，用 := 赋值变量 b 的内容。使变量 c 与变量 b 内容相同</font>
+
+<font color="0148C2">if</font> (b = c)       <font color="708EB9">; --> 判断变量 b 的值与变量 c 的值是否相同，如果相同则执行花括号的代码</font>
+{                   <font color="708EB9">; --> 先在开头用 % 转为强制表达式，以下弹窗显示内容为："</font><font color="5100FF">变量b：内容b - 变量c：内容b</font><font color="708EB9">"</font>
+    <font color="0148C2">MsgBox</font>, % "变量b：" b " - 变量c：" c
+}
+</pre>
+
+<div style="width:800px">
+这一组例子可以明显看出，<b><font color="A04040">传统赋值</font></b>和<b><font color="A04040">表达式赋值</font></b>的写法差异。</div>
+
+<div style="width:800px">另外是在<b><font color="212121">2号</font></b>例子的<b><font color="212121">MsgBox弹窗</font></b>中，在<b><font color="212121">开头</font></b>用 <b>%</b> 转为<b><font color="212121">强制表达式</font></b>意义是：只有<b><font color="212121">强制表达式</font></b>才能做<b><font color="212121">表达式运算</font></b>。</div>
+
+<div style="width:800px"><b><font color="212121">正确表达式直接运算示例：</font></b>MsgBox, % "1+2的计算结果：" 1+2</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px"><b><font color="212121">错误示例：</font></b>MsgBox, 1+2的计算结果：%1%+%2%</div>
+<div style="width:800px"><b><font color="212121">错误原因是：</font></b><b><font color="A04040">传统命令式</font></b>因为是默认<b><font color="A04040">强制字符串</font></b>，是<b><font color="212121">无法直接运算</font></b>的。必须转<b><font color="A04040">表达式</font></b>才能<b><font color="212121">运算</font></b>。
+</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px">在<a href="https://www.autohotkey.com/">AHK</a>v1版中，<b><font color="212121">大部分</font></b>是以<b><font color="A04040">命令式</font></b>存在的。如：<b><font color="3F5770">Run、Loop</font></b>的<b><font color="212121">参数</font></b><b><font color="3F5770">、MsgBox</font></b>等，这些命令为<b><font color="A04040">默认强制传统式</font></b>，</div>
+
+<div style="width:800px">需要<b><font color="212121">运算</font></b>就得<b><font color="212121">开头</font></b>用 <b>%</b> 转为<b><font color="A04040">强制表达式</font></b>再直接<b><font color="212121">运算</font></b>。而<b><font color="3F5770">StrReplace()、FileExist()、SubStr()</font></b>等<b><font color="A04040">函数式命令</font></b>，</div>
+
+<div style="width:800px"><b><font color="212121">参数</font></b>都是<b><font color="A04040">默认表达式</font></b>写法，<b><font color="212121">后面带()</font></b>的<b><font color="A04040">函数式命令</font></b>只能用<b><font color="A04040">表达式书写</font></b>，无法转为<b><font color="A04040">传统式</font></b>。</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px">以上就是使用</font></b><a href="https://www.autohotkey.com/">AHK</a>v1时，你需要<b><font color="212121">特别注意</font></b>的事。只要能够<b><font color="212121">区分历史遗留语法</font></b>，你将能用<a href="https://www.autohotkey.com/">AHK</a><b><font color="212121">解决很多问题</font></b>。</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px">更多语法参考帮助：详见<b><font color="212121">中文帮助文档</font></b>介绍</div>
+<div style="width:800px"><a href="https://www.autoahk.com/help/autohotkey/zh-cn/docs/Variables.htm">https://www.autoahk.com/help/autohotkey/zh-cn/docs/Variables.htm</a></div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px"><b><font color="212121">题外话：AHKv2</font></b>改成了<b><font color="A04040">全函数式语法</font></b>，但是<b><font color="212121">不再兼容v1</font></b>。算是另立一个<b><font color="212121">分支</font></b>。因为<b><font color="212121">v2</font></b>的<b><font color="212121">强语法报错</font></b>和<b><font color="212121">缺乏函数库积累</font></b>，使得<b><font color="212121">非程序员</font></b>用<b><font color="212121">v2</font></b>解决问题时，<b><font color="212121">缺少参考系</font></b>和<b><font color="212121">答案</font></b>。不是很在意<b><font color="212121">语法</font></b>的同学建议还是用<b><font color="212121">v1</font></b>来<b><font color="212121">解决问题</font></b>吧。</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px"><b><font color="212121">题外话2：AHK</font></b>是可以用<b><font color="212121">中文</font></b>做<b><font color="212121">变量名</font></b>和<b><font color="212121">函数名</font></b>，让AHK<b><font color="212121">正常显示中文</font></b>需要让<b><font color="212121">.ahk</font></b>文件以 <b><font color="212121">UTF-8-BOM</font></b> 编码保存</div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:600px ;"><font color="3F5770"><h2>实用脚本以及辅助工具</h2></font></div>
+
+<div style="width:800px"><b><font color="212121">热键控制的进阶用法：</font></b>结合帮助文档能完全重新定义你的键盘按键布局，极大的提高生产力</div>
+<div style="width:800px"><a href="https://www.autoahk.com/archives/36209">https://www.autoahk.com/archives/36209</a></div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px"><b><font color="212121">FindText 屏幕找图找字的自动化神器</font></b>：能实现当屏幕出现某图案时，就做对应自动化等操作</div>
+<div style="width:800px"><a href="https://www.autoahk.com/archives/28493">https://www.autoahk.com/archives/28493</a></div>
+
+<div style="height:30px;"> </div>
+
+<div style="width:800px"><b><font color="212121">AHKinfo 标准控件信息获取工具</font></b>：能方便的获取各种信息并生成后台操作代码，更简单的制作自动化流程</div>
+<div style="width:800px"><a href="https://www.autoahk.com/archives/39376">https://www.autoahk.com/archives/39376</a></div>
+
+<div style="height:30px;"> </div>
