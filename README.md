@@ -38,6 +38,8 @@
 * 我添加了4个手势依赖包的镜像源供高速下载，如果出现某个镜像源无法下载的情况。可根据弹出提示点击重新换源下载即可。如果镜像源和官方源自动下载都失效，只能自行想办法从官方GitHub下载"GoogleMediapipePackageDll-main.zip"压缩包后，将压缩包存放在"Lib"目录中，重启软件即可识别压缩包并解压适配手势识别功能。
 
 
+* 运行后出现 "0x800401F3 - 无效的类字符串" 的报错，需安装微软运行时依赖库后再试。微软运行时依赖库：https://www.ahk66.com/MSVBCRT
+
 # 感谢以下项目
 
 >[peng-zhihui/ElectronBot: Open Source Desktop Robotics Project](https://github.com/peng-zhihui/ElectronBot)
